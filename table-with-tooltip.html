@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Table with Tooltips</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+      background-color: purple;
+      color: white;
+    }
+
+    .table-container {
+      padding: 50px;
+    }
+
+    .table {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 50px;
+    }
+
+    .row {
+      display: flex;
+      width: calc(100% - 50px);
+      gap: 50px;
+      /* Adjust width to account for gap */
+    }
+
+    .cell {
+      flex-basis: calc(33.33% - 17px);
+      /* Adjust for borders */
+      border: 1px solid white;
+      padding: 10px;
+      position: relative;
+      height: 100px;
+    }
+
+    .header-row {
+      font-weight: bold;
+    }
+
+    /* Tooltip */
+    .cell[data-tooltip]:hover::after {
+      content: attr(data-tooltip);
+      position: absolute;
+      top: -20px;
+      right: 0;
+      background-color: #000;
+      opacity: 0.6;
+      color: #fff;
+      padding: 5px 10px;
+      border-radius: 5px;
+      white-space: nowrap;
+      z-index: 1;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="table-container">
+    <div class="table">
+      <div class="row header-row">
+        <div class="cell header-cell" data-tooltip="Tooltip 1">Header 1</div>
+        <div class="cell header-cell" data-tooltip="Tooltip 2">Header 2</div>
+        <div class="cell header-cell" data-tooltip="Tooltip 3">Header 3</div>
+      </div>
+      <div class="row">
+        <div class="cell" data-tooltip="Tooltip 4">Cell 1</div>
+        <div class="cell" data-tooltip="Tooltip 5">Cell 2</div>
+        <div class="cell" data-tooltip="Tooltip 6">Cell 3</div>
+      </div>
+      <div class="row">
+        <div class="cell" data-tooltip="Tooltip 7">Cell 4</div>
+        <div class="cell" data-tooltip="Tooltip 8">Cell 5</div>
+        <div class="cell" data-tooltip="Tooltip 9">Cell 6</div>
+      </div>
+      <!-- Add more rows as needed -->
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
